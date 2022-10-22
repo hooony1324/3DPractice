@@ -4,6 +4,8 @@
 #include "Actor_Plane.h"
 #include "Actor_Character.h"
 
+GameEngineActor* TestLevel2::Player = nullptr;
+
 TestLevel2::TestLevel2() 
 {
 }
@@ -14,12 +16,12 @@ TestLevel2::~TestLevel2()
 
 void TestLevel2::Start()
 {
-	GetMainCamera()->SetProjectionMode(CAMERAPROJECTIONMODE::PersPective);
+
 }
 
 void TestLevel2::Update(float _DeltaTime)
 {
-	FollowMainCamToPlayer();
+	FollowMainCamToPlayer(_DeltaTime);
 }
 
 void TestLevel2::End()
@@ -29,6 +31,8 @@ void TestLevel2::End()
 void TestLevel2::LevelStartEvent()
 {
 	ResourcesLoad();
+
+	GetMainCamera()->SetProjectionMode(CAMERAPROJECTIONMODE::PersPective);
 }
 
 void TestLevel2::LevelEndEvent()
@@ -78,17 +82,28 @@ void TestLevel2::ResourcesLoad()
 	// 엑터 생성/관리
 	GameEngineActor* Plane = CreateActor<Actor_Plane>();
 	Plane->GetTransform().SetWorldScale({ 1000, 1000, 20 });
-	Plane->GetTransform().SetWorldRotation({ 70, 0, 0 });
+	Plane->GetTransform().SetWorldRotation({ 90, 0, 0 });
 
 	Player = CreateActor<Actor_Character>();
-	Player->GetTransform().SetWorldScale({ 40, 80, 40 });
+	Player->GetTransform().SetWorldScale({ 100, 80, 40 });
 	Player->GetTransform().SetWorldPosition({ 0, 90, 0 });
 
 	LevelActors.push_back(Plane);
 	LevelActors.push_back(Player);
 }
 
-void TestLevel2::FollowMainCamToPlayer()
+void TestLevel2::FollowMainCamToPlayer(float _DeltaTime)
 {
-	GetMainCamera()->GetTransform().SetWorldPosition(Player->GetTransform().GetWorldPosition() + float4(0, 40, 0));
+	// 이동
+	float DeltaTime = abs(_DeltaTime);
+
+	float4 PlayerPos = Player->GetTransform().GetWorldPosition() + float4(0, 80, -800);
+	float4 CamPos = GetMainCameraActor()->GetTransform().GetWorldPosition();
+
+	float4 NextCamPos = float4::Lerp(CamPos, PlayerPos, DeltaTime * 4.5f);
+
+	GetMainCameraActor()->GetTransform().SetWorldPosition(NextCamPos);
+
+	// 바라보기
+	
 }

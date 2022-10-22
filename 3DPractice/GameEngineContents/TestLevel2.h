@@ -5,6 +5,8 @@
 class TestLevel2 : public GameEngineLevel
 {
 public:
+	static GameEngineActor* Player;
+public:
 	// constrcuter destructer
 	TestLevel2();
 	~TestLevel2();
@@ -27,7 +29,6 @@ private:
 	void ResourcesLoad();
 	std::vector<GameEngineActor*> LevelActors;
 
-	GameEngineActor* Player;
-	void FollowMainCamToPlayer();
+	void FollowMainCamToPlayer(float _DeltaTime);
 };
 

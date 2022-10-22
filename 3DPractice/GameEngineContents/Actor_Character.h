@@ -1,7 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
-const float SPEED_PLAYER = 100.0f;
+const float SPEED_PLAYER = 200.0f;
 
 // Ό³Έν :
 class Actor_Character : public GameEngineActor
@@ -26,6 +26,8 @@ protected:
 	void InputController(float _DeltaTime);
 
 private:
+	GameEngineTextureRenderer* Renderer;
+
 	GameEngineCollision* Collision;
 
 	float4 MoveDir;

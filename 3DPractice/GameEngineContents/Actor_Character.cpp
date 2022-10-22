@@ -13,8 +13,13 @@ Actor_Character::~Actor_Character()
 
 void Actor_Character::Start()
 {
+	Renderer = CreateComponent<GameEngineTextureRenderer>();
+	Renderer->SetTexture("blackcat.png");
+	Renderer->GetTransform().SetLocalScale({ 1, 1, 1 });
+
 	Collision = CreateComponent<GameEngineCollision>();
 	Collision->GetTransform().SetLocalScale({ 1, 1, 1 });
+	Collision->SetCollisionMode(CollisionMode::Ex);
 	Collision->ChangeOrder(CollisionGroup::Player);
 	Collision->SetDebugSetting(CollisionType::CT_OBB, float4(0.0f, 1.0f, 0.0f, 0.5f));
 
@@ -28,15 +33,22 @@ void Actor_Character::Start()
 		GameEngineInput::GetInst()->CreateKey("A", 'A');
 		GameEngineInput::GetInst()->CreateKey("S", 'S');
 		GameEngineInput::GetInst()->CreateKey("D", 'D');
+		GameEngineInput::GetInst()->CreateKey("SpaceBar", VK_SPACE);
 	}
 }
 
 void Actor_Character::Update(float _DeltaTime)
 {
-	InputController(_DeltaTime);
+	float DeltaTime = abs(_DeltaTime);
 
+	InputController(DeltaTime);
+	ActivateGravity();
 
-	GetTransform().SetWorldMove(MoveDir * MoveSpeed * _DeltaTime);
+	if (abs(MoveDir.x) > 0.4f)
+	{
+		int a = 0;
+	}
+	GetTransform().SetWorldMove(MoveDir * MoveSpeed * DeltaTime);
 }
 
 void Actor_Character::End()
@@ -46,10 +58,23 @@ void Actor_Character::End()
 void Actor_Character::ActivateGravity()
 {
 	// 바닥이 없으면 (y축)
-	
+	bool IsGround = Collision->IsCollision(CollisionType::CT_OBB, CollisionGroup::Map, CollisionType::CT_OBB,
+		[=](GameEngineCollision* _This, GameEngineCollision* _Other)
+		{
+			int a = 0;
+			return CollisionReturn::ContinueCheck;
+		});
 
 
 	// 내려간다
+	if (false == IsGround)
+	{
+		MoveDir.y = -1.0f;
+	}
+	else
+	{
+		MoveDir.y = 0.0f;
+	}
 }
 
 void Actor_Character::InputController(float _DeltaTime)
@@ -59,22 +84,27 @@ void Actor_Character::InputController(float _DeltaTime)
 
 	if (true == GameEngineInput::GetInst()->IsPress("W"))
 	{
-		MoveDir += float4::FORWARD;
+		MoveDir += float4(0.0f, 0.0f, 1.0f, 0.0f);
 	}
 
 	if (true == GameEngineInput::GetInst()->IsPress("A"))
 	{
-		MoveDir += float4::LEFT;
+		MoveDir += float4(-1.0f, 0.0f, 0.0f, 0.0f);
 	}
 
 	if (true == GameEngineInput::GetInst()->IsPress("S"))
 	{
-		MoveDir += float4::BACK;
+		MoveDir += float4(0.0f, 0.0f, -1.0f, 0.0f);
 	}
 
 	if (true == GameEngineInput::GetInst()->IsPress("D"))
 	{
-		MoveDir += float4::RIGHT;
+		MoveDir += float4(1.0f, 0.0f, 0.0f, 0.0f);
+	}
+
+	if (true == GameEngineInput::GetInst()->IsPress("SpaceBar"))
+	{
+		GetTransform().SetWorldMove({ 0, 10, 0 });
 	}
 
 }
