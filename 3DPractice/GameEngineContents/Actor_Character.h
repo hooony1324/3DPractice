@@ -32,5 +32,7 @@ private:
 
 	float4 MoveDir;
 	float MoveSpeed;
+
+	float4 MousePosition;
 };
 

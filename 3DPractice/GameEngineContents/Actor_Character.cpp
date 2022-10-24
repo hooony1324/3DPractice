@@ -14,7 +14,11 @@ Actor_Character::~Actor_Character()
 void Actor_Character::Start()
 {
 	Renderer = CreateComponent<GameEngineTextureRenderer>();
-	Renderer->SetTexture("blackcat.png");
+	Renderer->SetPipeLine("Outline");
+
+	//Renderer->GetRenderUnit().GetClonePipeLine()->SetOutputMergerDepthStencil("OutlineStencil");
+
+	Renderer->SetTexture("whitecircle.png");
 	Renderer->GetTransform().SetLocalScale({ 1, 1, 1 });
 
 	Collision = CreateComponent<GameEngineCollision>();
@@ -51,6 +55,10 @@ void Actor_Character::Update(float _DeltaTime)
 		int a = 0;
 	}
 	GetTransform().SetWorldMove(MoveDir * MoveSpeed * DeltaTime);
+
+
+	// Outline ฐüทร
+	MousePosition = GetLevel()->GetMainCameraActorTransform().GetWorldPosition();
 }
 
 void Actor_Character::End()

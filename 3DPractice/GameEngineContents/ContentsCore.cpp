@@ -4,6 +4,7 @@
 #include "GameEngineContents/TestLevel2.h"
 
 #include "ContentsManagerGUI.h"
+#include <GameEngineCore/GameEngineDepthStencil.h>
 
 #pragma comment(lib, "GameEngineBase.lib")
 
@@ -30,6 +31,22 @@ void ContentsCore::Start()
 	GameEngineGUI::CreateGUIWindow<GameEngineStatusWindow>("EngineStatus", nullptr);
 	GameEngineGUI::CreateGUIWindow<ContentsManagerGUI>("ContentsManager", nullptr);
 
+	// 쉐이더 로드
+	{
+		GameEngineDirectory Dir;
+
+		Dir.MoveParentToExitsChildDirectory("ContentsShader");
+		Dir.Move("ContentsShader");
+
+		std::vector<GameEngineFile> Shaders = Dir.GetAllFile("hlsl");
+
+		for (size_t i = 0; i < Shaders.size(); i++)
+		{
+			GameEngineShader::AutoCompile(Shaders[i].GetFullPath());
+		}
+	}
+
+	// 테스트 메쉬 로드
 	{
 		GameEngineDirectory Dir;
 
@@ -38,8 +55,16 @@ void ContentsCore::Start()
 		Dir.Move("Mesh");
 
 		GameEngineFBXMesh* Mesh = GameEngineFBXMesh::Load(Dir.PlusFilePath("2Handed.FBX"));
-
 	}
+
+
+	// 렌더링 파이프라인 추가
+	{
+		GameEngineMaterial* Material = GameEngineMaterial::Create("Outline");
+		Material->SetVertexShader("Outline.hlsl");
+		Material->SetPixelShader("Outline.hlsl");
+	}
+
 }
 
 void ContentsCore::Update(float _DeltaTime)
