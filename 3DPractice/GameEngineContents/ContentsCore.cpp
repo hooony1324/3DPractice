@@ -30,6 +30,16 @@ void ContentsCore::Start()
 	GameEngineGUI::CreateGUIWindow<GameEngineStatusWindow>("EngineStatus", nullptr);
 	GameEngineGUI::CreateGUIWindow<ContentsManagerGUI>("ContentsManager", nullptr);
 
+	{
+		GameEngineDirectory Dir;
+
+		Dir.MoveParentToExitsChildDirectory("Resources");
+		Dir.Move("Resources");
+		Dir.Move("Mesh");
+
+		GameEngineFBXMesh* Mesh = GameEngineFBXMesh::Load(Dir.PlusFilePath("2Handed.FBX"));
+
+	}
 }
 
 void ContentsCore::Update(float _DeltaTime)

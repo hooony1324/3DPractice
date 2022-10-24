@@ -27,16 +27,22 @@
 template<typename ResType>
 class GameEngineRes : public GameEngineNameObject
 {
-protected:
-	bool Original;
-
 public:
+	void SetPath(const std::string& _Path)
+	{
+		Path = _Path;
+	}
+
+	std::string GetPath()
+	{
+		return Path;
+	}
+
 	bool IsOriginal() 
 	{
 		return Original;
 	}
 
-public:
 	// constrcuter destructer
 	GameEngineRes() 
 		: Original(true)
@@ -120,6 +126,8 @@ protected:
 		return NewRes;
 	}
 
+	bool Original;
+	std::string Path;
 
 private:
 	static std::map<std::string, ResType*> NamedRes;
