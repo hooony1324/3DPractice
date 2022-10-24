@@ -34,6 +34,8 @@ void Actor_Character::Start()
 		GameEngineInput::GetInst()->CreateKey("S", 'S');
 		GameEngineInput::GetInst()->CreateKey("D", 'D');
 		GameEngineInput::GetInst()->CreateKey("SpaceBar", VK_SPACE);
+
+		GameEngineInput::GetInst()->CreateKey("R", 'R');
 	}
 }
 
@@ -106,5 +108,11 @@ void Actor_Character::InputController(float _DeltaTime)
 	{
 		GetTransform().SetWorldMove({ 0, 10, 0 });
 	}
+
+	if (true == GameEngineInput::GetInst()->IsPress("R"))
+	{
+		Renderer->GetTransform().SetAddWorldRotation({ 0, 360 * abs(_DeltaTime), 0 });
+	}
+
 
 }

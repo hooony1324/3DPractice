@@ -81,7 +81,7 @@ void TestLevel2::ResourcesLoad()
 
 	// 竣磐 积己/包府
 	GameEngineActor* Plane = CreateActor<Actor_Plane>();
-	Plane->GetTransform().SetWorldScale({ 1000, 1000, 20 });
+	Plane->GetTransform().SetWorldScale({ 2000, 2000, 20 });
 	Plane->GetTransform().SetWorldRotation({ 90, 0, 0 });
 
 	Player = CreateActor<Actor_Character>();
@@ -94,6 +94,11 @@ void TestLevel2::ResourcesLoad()
 
 void TestLevel2::FollowMainCamToPlayer(float _DeltaTime)
 {
+	if (true == GetMainCameraActor()->IsFreeCameraMode())
+	{
+		return;
+	}
+
 	// 捞悼
 	float DeltaTime = abs(_DeltaTime);
 

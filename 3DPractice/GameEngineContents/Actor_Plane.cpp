@@ -18,7 +18,7 @@ void Actor_Plane::Start()
 
 	Collision = CreateComponent<GameEngineCollision>();
 	Collision->GetTransform().SetLocalScale(Renderer->GetTransform().GetLocalScale());
-	Collision->SetDebugSetting(CollisionType::CT_OBB, float4(0.2f, 0.2f, 0.2f, 0.75f));
+	Collision->SetDebugSetting(CollisionType::CT_OBB, float4(0.2f, 0.2f, 0.2f, 0.25f));
 	Collision->ChangeOrder(CollisionGroup::Map);
 }
 
