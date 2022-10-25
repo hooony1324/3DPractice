@@ -100,7 +100,7 @@ private:
 
 	void PushRenderer(GameEngineRenderer* _Renderer);
 
-
+	float4 GetWorldPositionToScreenPosition(const float4& _Pos);
 
 	void Release(float _DelataTime);
 
