@@ -2,7 +2,9 @@
 #include "TestLevel2.h"
 
 #include "Actor_Plane.h"
+#include "Actor_Box.h"
 #include "Actor_Character.h"
+#include "ActorPicker.h"
 
 GameEngineActor* TestLevel2::Player = nullptr;
 
@@ -86,10 +88,17 @@ void TestLevel2::ResourcesLoad()
 
 	Player = CreateActor<Actor_Character>();
 	Player->GetTransform().SetWorldScale({ 100, 80, 40 });
-	Player->GetTransform().SetWorldPosition({ 0, 90, 0 });
+	Player->GetTransform().SetWorldPosition({ 0, 90, -200 });
+
+	GameEngineActor* Box = CreateActor<Actor_Box>();
+	Box->GetTransform().SetWorldPosition({ -300, 90, -100 });
+
+	Picker = CreateActor<ActorPicker>();
 
 	LevelActors.push_back(Plane);
 	LevelActors.push_back(Player);
+	LevelActors.push_back(Box);
+	LevelActors.push_back(Picker);
 }
 
 void TestLevel2::FollowMainCamToPlayer(float _DeltaTime)

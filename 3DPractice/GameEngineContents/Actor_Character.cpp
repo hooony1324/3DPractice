@@ -41,6 +41,9 @@ void Actor_Character::Start()
 
 		GameEngineInput::GetInst()->CreateKey("R", 'R');
 	}
+
+	// 피킹 적용
+	CreatePickingCollision(Collision->GetTransform().GetWorldScale());
 }
 
 void Actor_Character::Update(float _DeltaTime)
@@ -59,6 +62,9 @@ void Actor_Character::Update(float _DeltaTime)
 
 	// Outline 관련
 	MousePosition = GetLevel()->GetMainCameraActorTransform().GetWorldPosition();
+
+	// 피킹 적용
+	CheckPickingRay();
 }
 
 void Actor_Character::End()

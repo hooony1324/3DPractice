@@ -24,4 +24,5 @@ enum class CollisionGroup
 {
 	Player,
 	Map,
+	Ray,
 };

@@ -1,8 +1,8 @@
 #pragma once
-#include <GameEngineCore/GameEngineActor.h>
+#include "PickableActor.h"
 
 // Ό³Έν :
-class Actor_Box : public GameEngineActor
+class Actor_Box : public PickableActor
 {
 public:
 	// constrcuter destructer
@@ -22,6 +22,7 @@ protected:
 
 private:
 	GameEngineTextureRenderer* Renderer;
+	GameEngineCollision* Collision;
 	float4 ResultColor;
 };
 

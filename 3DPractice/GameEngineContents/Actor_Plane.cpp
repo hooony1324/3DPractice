@@ -20,10 +20,14 @@ void Actor_Plane::Start()
 	Collision->GetTransform().SetLocalScale(Renderer->GetTransform().GetLocalScale());
 	Collision->SetDebugSetting(CollisionType::CT_OBB, float4(0.2f, 0.2f, 0.2f, 0.25f));
 	Collision->ChangeOrder(CollisionGroup::Map);
+
+	CreatePickingCollision(Collision->GetTransform().GetWorldScale());
 }
 
 void Actor_Plane::Update(float _DeltaTime)
 {
+
+	CheckPickingRay();
 }
 
 void Actor_Plane::End()

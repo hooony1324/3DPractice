@@ -1,10 +1,10 @@
 #pragma once
-#include <GameEngineCore/GameEngineActor.h>
+#include "PickableActor.h"
 
 const float SPEED_PLAYER = 200.0f;
 
 // Ό³Έν :
-class Actor_Character : public GameEngineActor
+class Actor_Character : public PickableActor
 {
 public:
 	// constrcuter destructer

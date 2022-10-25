@@ -54,6 +54,12 @@
     <ClInclude Include="GlobalValues.h">
       <Filter>Global</Filter>
     </ClInclude>
+    <ClInclude Include="ActorPicker.h">
+      <Filter>Actor\TestLevel2</Filter>
+    </ClInclude>
+    <ClInclude Include="PickableActor.h">
+      <Filter>Actor\TestLevel2</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ContentsCore.cpp">
@@ -82,6 +88,12 @@
     </ClCompile>
     <ClCompile Include="GlobalValues.cpp">
       <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorPicker.cpp">
+      <Filter>Actor\TestLevel2</Filter>
+    </ClCompile>
+    <ClCompile Include="PickableActor.cpp">
+      <Filter>Actor\TestLevel2</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

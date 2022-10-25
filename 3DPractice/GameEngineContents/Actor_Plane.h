@@ -1,8 +1,8 @@
 #pragma once
-#include <GameEngineCore/GameEngineActor.h>
+#include "PickableActor.h"
 
 // Ό³Έν :
-class Actor_Plane : public GameEngineActor
+class Actor_Plane : public PickableActor
 {
 public:
 	// constrcuter destructer

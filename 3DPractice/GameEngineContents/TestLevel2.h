@@ -30,5 +30,7 @@ private:
 	std::vector<GameEngineActor*> LevelActors;
 
 	void FollowMainCamToPlayer(float _DeltaTime);
+
+	GameEngineActor* Picker;
 };
 
