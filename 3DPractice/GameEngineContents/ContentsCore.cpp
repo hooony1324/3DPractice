@@ -69,11 +69,23 @@ void ContentsCore::Start()
 	{
 		D3D11_DEPTH_STENCIL_DESC Desc = { 0 };
 
-		Desc.DepthEnable = TRUE;
-		Desc.StencilEnable = TRUE;
-		Desc.StencilReadMask = 0xFF;
-		Desc.FrontFace.StencilFunc = D3D11_COMPARISON_NOT_EQUAL;
-		Desc.FrontFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
+		Desc.DepthEnable = false;
+		Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
+		Desc.DepthFunc = D3D11_COMPARISON_LESS;
+		Desc.StencilEnable = true;
+		Desc.StencilReadMask = 0xff;
+		Desc.StencilWriteMask = 0xff;
+
+		Desc.FrontFace.StencilFailOp = D3D11_STENCIL_OP_KEEP;
+		Desc.FrontFace.StencilDepthFailOp = D3D11_STENCIL_OP_KEEP;
+		Desc.FrontFace.StencilPassOp = D3D11_STENCIL_OP_REPLACE;
+		Desc.FrontFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
+
+		Desc.BackFace.StencilFailOp = D3D11_STENCIL_OP_KEEP;
+		Desc.BackFace.StencilDepthFailOp = D3D11_STENCIL_OP_KEEP;
+		Desc.BackFace.StencilPassOp = D3D11_STENCIL_OP_REPLACE;
+		Desc.BackFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
+
 		GameEngineDepthStencil::Create("OutlineStencil", Desc);
 	}
 
