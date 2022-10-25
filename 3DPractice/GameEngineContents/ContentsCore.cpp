@@ -65,6 +65,18 @@ void ContentsCore::Start()
 		Material->SetPixelShader("Outline.hlsl");
 	}
 
+	// 스텐실용 버퍼추가
+	{
+		D3D11_DEPTH_STENCIL_DESC Desc = { 0 };
+
+		Desc.DepthEnable = TRUE;
+		Desc.StencilEnable = TRUE;
+		Desc.StencilReadMask = 0xFF;
+		Desc.FrontFace.StencilFunc = D3D11_COMPARISON_NOT_EQUAL;
+		Desc.FrontFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
+		GameEngineDepthStencil::Create("OutlineStencil", Desc);
+	}
+
 }
 
 void ContentsCore::Update(float _DeltaTime)

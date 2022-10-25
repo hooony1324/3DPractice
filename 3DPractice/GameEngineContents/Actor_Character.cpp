@@ -16,7 +16,7 @@ void Actor_Character::Start()
 	Renderer = CreateComponent<GameEngineTextureRenderer>();
 	Renderer->SetPipeLine("Outline");
 
-	//Renderer->GetRenderUnit().GetClonePipeLine()->SetOutputMergerDepthStencil("OutlineStencil");
+	Renderer->GetRenderUnit().GetClonePipeLine()->SetOutputMergerDepthStencil("OutlineStencil");
 
 	Renderer->SetTexture("whitecircle.png");
 	Renderer->GetTransform().SetLocalScale({ 1, 1, 1 });
