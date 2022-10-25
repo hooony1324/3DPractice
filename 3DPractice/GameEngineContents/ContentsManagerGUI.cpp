@@ -86,5 +86,16 @@ void ContentsManagerGUI::OnGUI(GameEngineLevel* _Level, float _DeltaTime)
 		std::string Name = "PickedActor : " + std::to_string(Pos.x) + " | " + std::to_string(Pos.y) + " | " + std::to_string(Pos.z);
 		ImGui::Text(Name.c_str());
 	}
+	{
+		GameEngineActor* Actor = ActorPicker::ClickedActor;
+		if (nullptr == Actor)
+		{
+			ImGui::Text("There is no Clicked Actor");
+			return;
+		}
+		float4 Pos = Actor->GetTransform().GetWorldPosition();
+		std::string Name = "ClickedActor : " + std::to_string(Pos.x) + " | " + std::to_string(Pos.y) + " | " + std::to_string(Pos.z);
+		ImGui::Text(Name.c_str());
+	}
 
 }

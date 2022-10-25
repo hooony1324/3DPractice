@@ -24,6 +24,9 @@ void TestLevel2::Start()
 void TestLevel2::Update(float _DeltaTime)
 {
 	FollowMainCamToPlayer(_DeltaTime);
+
+
+
 }
 
 void TestLevel2::End()

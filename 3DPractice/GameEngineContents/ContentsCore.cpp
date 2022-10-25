@@ -20,7 +20,6 @@ ContentsCore::~ContentsCore()
 void ContentsCore::Start()
 {
 
-	GameEngineTime::SetLimitFrame(60);
 
 
 	// RTTI 런 타임 타입 인포메이션
@@ -88,6 +87,10 @@ void ContentsCore::Start()
 
 		GameEngineDepthStencil::Create("OutlineStencil", Desc);
 	}
+
+	// 키 추가
+	GameEngineInput::GetInst()->CreateKey("M_LeftClick", VK_LBUTTON);
+
 
 }
 

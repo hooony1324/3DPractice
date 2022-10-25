@@ -7,7 +7,7 @@ class PickableActor : public GameEngineActor
 public:
 	// constrcuter destructer
 	PickableActor();
-	virtual ~PickableActor();
+	~PickableActor();
 
 	// delete Function
 	PickableActor(const PickableActor& _Other) = delete;
@@ -16,6 +16,10 @@ public:
 	PickableActor& operator=(PickableActor&& _Other) noexcept = delete;
 
 protected:
+/////////////////////////////////////////////////////////////////////
+//	엑터 피킹
+/////////////////////////////////////////////////////////////////////
+
 	// 전부 자식에서 호출해주어야 할 함수
 	void CreatePickingCollision(float4 Scale);
 	void CheckPickingRay();

@@ -8,6 +8,7 @@
 float4 ActorPicker::PickerAngle = float4::ZERO;
 std::set<GameEngineActor*> ActorPicker::PickedActors;
 GameEngineActor* ActorPicker::PickedActor = nullptr;
+GameEngineActor* ActorPicker::ClickedActor = nullptr;
 
 ActorPicker::ActorPicker() 
 {
@@ -27,6 +28,7 @@ void ActorPicker::Start()
 
 void ActorPicker::Update(float _DeltaTime)
 {
+	
 	// 카메라와 동일한 위치 
 	CamPos = GetLevel()->GetMainCameraActor()->GetTransform().GetWorldPosition();
 	GetTransform().SetWorldPosition(CamPos);
@@ -42,6 +44,9 @@ void ActorPicker::Update(float _DeltaTime)
 
 	// Ray와 충돌확인
 	SelectPickedActor();
+
+	// 피킹 오브젝트 클릭체크
+	ClickCheck();
 }
 
 void ActorPicker::End()
@@ -73,5 +78,26 @@ void ActorPicker::SelectPickedActor()
 	}
 	PickedActor = Nearest;
 	Nearest = nullptr;
+
+}
+
+void ActorPicker::ClickCheck()
+{
+	if (nullptr == PickedActor)
+	{
+		return;
+	}
+
+	if (true == GameEngineInput::GetInst()->IsDown("M_LeftClick"))
+	{
+		ClickedActor = PickedActor;
+		return;
+	}
+
+	if (true == GameEngineInput::GetInst()->IsFree("M_LeftClick"))
+	{
+		ClickedActor = nullptr;
+		return;
+	}
 
 }

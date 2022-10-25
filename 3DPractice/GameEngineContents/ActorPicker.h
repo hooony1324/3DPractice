@@ -8,6 +8,7 @@ public:
 	static float4 PickerAngle;
 	static std::set<GameEngineActor*> PickedActors;
 	static GameEngineActor* PickedActor;
+	static GameEngineActor* ClickedActor;
 
 public:
 	// constrcuter destructer
@@ -30,5 +31,6 @@ private:
 	GameEngineCollision* Collision_Ray;
 
 	void SelectPickedActor();
+	void ClickCheck();
 };
 

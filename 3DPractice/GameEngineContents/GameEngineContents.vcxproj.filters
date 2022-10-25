@@ -13,9 +13,6 @@
     <Filter Include="ContentsGUI">
       <UniqueIdentifier>{2d8a1ea8-0cec-4b20-9562-23993812cebe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Actor\TestLevel2">
-      <UniqueIdentifier>{67e3904a-5308-4e1f-bf28-30fc55cea661}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{eee3c248-3814-48af-b1f4-f221fa7a0ee6}</UniqueIdentifier>
     </Filter>
@@ -24,6 +21,9 @@
     </Filter>
     <Filter Include="Global">
       <UniqueIdentifier>{f8bb514b-fed1-4869-9a25-bd76ef00f10a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\TestLevel1\TestLevel2">
+      <UniqueIdentifier>{67e3904a-5308-4e1f-bf28-30fc55cea661}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -49,16 +49,16 @@
       <Filter>Actor\TestLevel1</Filter>
     </ClInclude>
     <ClInclude Include="Actor_Character.h">
-      <Filter>Actor\TestLevel2</Filter>
+      <Filter>Actor\TestLevel1\TestLevel2</Filter>
     </ClInclude>
     <ClInclude Include="GlobalValues.h">
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="ActorPicker.h">
-      <Filter>Actor\TestLevel2</Filter>
+      <Filter>Actor\TestLevel1\TestLevel2</Filter>
     </ClInclude>
     <ClInclude Include="PickableActor.h">
-      <Filter>Actor\TestLevel2</Filter>
+      <Filter>Actor\TestLevel1\TestLevel2</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -84,16 +84,16 @@
       <Filter>Actor\TestLevel1</Filter>
     </ClCompile>
     <ClCompile Include="Actor_Character.cpp">
-      <Filter>Actor\TestLevel2</Filter>
+      <Filter>Actor\TestLevel1\TestLevel2</Filter>
     </ClCompile>
     <ClCompile Include="GlobalValues.cpp">
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="ActorPicker.cpp">
-      <Filter>Actor\TestLevel2</Filter>
+      <Filter>Actor\TestLevel1\TestLevel2</Filter>
     </ClCompile>
     <ClCompile Include="PickableActor.cpp">
-      <Filter>Actor\TestLevel2</Filter>
+      <Filter>Actor\TestLevel1\TestLevel2</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
