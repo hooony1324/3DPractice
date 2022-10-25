@@ -58,5 +58,20 @@ void ActorPicker::SelectPickedActor()
 		return;
 	}
 
-	PickedActors;
+	GameEngineActor* Nearest = nullptr;
+	for (GameEngineActor* Actor : PickedActors)
+	{
+		if (nullptr == Nearest)
+		{
+			Nearest = Actor;
+		}
+		else
+		{
+			Nearest = Nearest->GetTransform().GetWorldPosition().z < Actor->GetTransform().GetWorldPosition().z
+				? Nearest : Actor;
+		}
+	}
+	PickedActor = Nearest;
+	Nearest = nullptr;
+
 }

@@ -70,23 +70,21 @@ void ContentsManagerGUI::OnGUI(GameEngineLevel* _Level, float _DeltaTime)
 	}
 
 	ImGui::Text("");
-	ImGui::Text("");
 	{
 		size_t Num = ActorPicker::PickedActors.size();
 		std::string Name = "PickedActorsNum : " + std::to_string(Num);
 		ImGui::Text(Name.c_str());
 	}
-
-	ImGui::Text("");
 	{
-		//GameEngineActor* Actor = ActorPicker::PickedActors;
-		//if (nullptr == Actor)
-		//{
-		//	return;
-		//}
-		//float4 Pos = Actor->GetTransform().GetWorldPosition();
-		//std::string Name = "PickedActor : " + std::to_string(Pos.x) + " | " + std::to_string(Pos.y) + " | " + std::to_string(Pos.z);
-		//ImGui::Text(Name.c_str());
+		GameEngineActor* Actor = ActorPicker::PickedActor;
+		if (nullptr == Actor)
+		{
+			ImGui::Text("There is no Picked Actor");
+			return;
+		}
+		float4 Pos = Actor->GetTransform().GetWorldPosition();
+		std::string Name = "PickedActor : " + std::to_string(Pos.x) + " | " + std::to_string(Pos.y) + " | " + std::to_string(Pos.z);
+		ImGui::Text(Name.c_str());
 	}
 
 }
