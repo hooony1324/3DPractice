@@ -6,6 +6,7 @@ class ActorPicker : public GameEngineActor
 {
 public:
 	static float4 PickerAngle;
+	static float4 MouseDir;
 	static std::set<GameEngineActor*> PickedActors;
 	static GameEngineActor* PickedActor;
 	static GameEngineActor* ClickedActor;
@@ -32,5 +33,6 @@ private:
 
 	void SelectPickedActor();
 	void ClickCheck();
+	void ClickControl();
 };
 

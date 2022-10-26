@@ -6,6 +6,7 @@
 
 
 float4 ActorPicker::PickerAngle = float4::ZERO;
+float4 ActorPicker::MouseDir = float4::ZERO;
 std::set<GameEngineActor*> ActorPicker::PickedActors;
 GameEngineActor* ActorPicker::PickedActor = nullptr;
 GameEngineActor* ActorPicker::ClickedActor = nullptr;
@@ -47,6 +48,9 @@ void ActorPicker::Update(float _DeltaTime)
 
 	// 피킹 오브젝트 클릭체크
 	ClickCheck();
+
+	// 마우스 조작
+	ClickControl();
 }
 
 void ActorPicker::End()
@@ -83,14 +87,12 @@ void ActorPicker::SelectPickedActor()
 
 void ActorPicker::ClickCheck()
 {
-	if (nullptr == PickedActor)
-	{
-		return;
-	}
-
+	// FSM으로 분리하는게 좋을듯
 	if (true == GameEngineInput::GetInst()->IsDown("M_LeftClick"))
 	{
 		ClickedActor = PickedActor;
+
+
 		return;
 	}
 
@@ -100,4 +102,20 @@ void ActorPicker::ClickCheck()
 		return;
 	}
 
+}
+
+void ActorPicker::ClickControl()
+{
+	if (nullptr == ClickedActor)
+	{
+		return;
+	}
+
+	MouseDir = GetLevel()->GetMainCamera()->GetMouseWorldDir();
+
+	// 이동속도
+	MouseDir *= 300;
+
+	// x축 이동
+	ClickedActor->GetTransform().SetWorldMove({ MouseDir.x, 0, 0 });
 }

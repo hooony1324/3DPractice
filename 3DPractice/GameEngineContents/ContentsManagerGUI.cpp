@@ -34,8 +34,8 @@ void ContentsManagerGUI::OnGUI(GameEngineLevel* _Level, float _DeltaTime)
 	}
 
 	{
-		float4 Pos = _Level->GetMainCamera()->GetMouseWorldPositionToActor();
-		std::string Name = "GetMouseWorldPositionToActor : " + std::to_string(Pos.x) + " | " + std::to_string(Pos.y) + " | " + std::to_string(Pos.z);
+		float4 Pos = _Level->GetMainCamera()->GetMouseWorldDir();
+		std::string Name = "GetMouseWorldDir : " + std::to_string(Pos.x) + " | " + std::to_string(Pos.y) + " | " + std::to_string(Pos.z);
 		ImGui::Text(Name.c_str());
 	}
 
@@ -80,22 +80,32 @@ void ContentsManagerGUI::OnGUI(GameEngineLevel* _Level, float _DeltaTime)
 		if (nullptr == Actor)
 		{
 			ImGui::Text("There is no Picked Actor");
-			return;
 		}
-		float4 Pos = Actor->GetTransform().GetWorldPosition();
-		std::string Name = "PickedActor : " + std::to_string(Pos.x) + " | " + std::to_string(Pos.y) + " | " + std::to_string(Pos.z);
-		ImGui::Text(Name.c_str());
+		else
+		{
+			float4 Pos = Actor->GetTransform().GetWorldPosition();
+			std::string Name = "PickedActor : " + std::to_string(Pos.x) + " | " + std::to_string(Pos.y) + " | " + std::to_string(Pos.z);
+			ImGui::Text(Name.c_str());
+		}
+
 	}
 	{
 		GameEngineActor* Actor = ActorPicker::ClickedActor;
 		if (nullptr == Actor)
 		{
 			ImGui::Text("There is no Clicked Actor");
-			return;
 		}
-		float4 Pos = Actor->GetTransform().GetWorldPosition();
-		std::string Name = "ClickedActor : " + std::to_string(Pos.x) + " | " + std::to_string(Pos.y) + " | " + std::to_string(Pos.z);
-		ImGui::Text(Name.c_str());
+		else
+		{
+			float4 Pos = Actor->GetTransform().GetWorldPosition();
+			std::string Name = "ClickedActor : " + std::to_string(Pos.x) + " | " + std::to_string(Pos.y) + " | " + std::to_string(Pos.z);
+			ImGui::Text(Name.c_str());
+		}
+	}
+	{
+		float4 Vec = ActorPicker::MouseDir;
+		std::string String = "MouseDir : " + std::to_string(Vec.x) + " | " + std::to_string(Vec.y) + " | " + std::to_string(Vec.z);
+		ImGui::Text(String.c_str());
 	}
 
 }
