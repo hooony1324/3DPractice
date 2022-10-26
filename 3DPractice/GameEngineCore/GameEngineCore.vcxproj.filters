@@ -177,6 +177,12 @@
     <ClInclude Include="GameEngineFBXAnimation.h">
       <Filter>Resources\FBX</Filter>
     </ClInclude>
+    <ClInclude Include="GameEnginePhysX.h">
+      <Filter>Object\Component\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\inc\PxPhysicsAPI.h">
+      <Filter>ThirdParty\Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngineActor.cpp">
@@ -345,6 +351,9 @@
     <ClCompile Include="GameEngineFBXAnimation.cpp">
       <Filter>Resources\FBX</Filter>
     </ClCompile>
+    <ClCompile Include="GameEnginePhysX.cpp">
+      <Filter>Object\Component\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Object">
@@ -501,6 +510,30 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="ThirdParty\bin\Release\zlib-mt.lib">
       <Filter>ThirdParty\Lib\Release</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\bin\Debug\PhysX_static_64.lib">
+      <Filter>ThirdParty\Lib\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\bin\Debug\PhysXCharacterKinematic_static_64.lib">
+      <Filter>ThirdParty\Lib\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\bin\Debug\PhysXCommon_static_64.lib">
+      <Filter>ThirdParty\Lib\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\bin\Debug\PhysXCooking_static_64.lib">
+      <Filter>ThirdParty\Lib\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\bin\Debug\PhysXExtensions_static_64.lib">
+      <Filter>ThirdParty\Lib\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\bin\Debug\PhysXFoundation_static_64.lib">
+      <Filter>ThirdParty\Lib\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\bin\Debug\PhysXPvdSDK_static_64.lib">
+      <Filter>ThirdParty\Lib\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\bin\Debug\PhysXVehicle_static_64.lib">
+      <Filter>ThirdParty\Lib\Debug</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
