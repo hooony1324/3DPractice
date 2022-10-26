@@ -535,5 +535,39 @@
     <CopyFileToFolders Include="ThirdParty\bin\Debug\PhysXVehicle_static_64.lib">
       <Filter>ThirdParty\Lib\Debug</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\bin\Release\PhysX_static_64.lib">
+      <Filter>ThirdParty\Lib\Release</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="ThirdParty\bin\Release\PhysXCharacterKinematic_static_64.lib">
+      <Filter>ThirdParty\Lib\Release</Filter>
+    </Library>
+    <Library Include="ThirdParty\bin\Release\PhysXCommon_static_64.lib">
+      <Filter>ThirdParty\Lib\Release</Filter>
+    </Library>
+    <Library Include="ThirdParty\bin\Release\PhysXCooking_static_64.lib">
+      <Filter>ThirdParty\Lib\Release</Filter>
+    </Library>
+    <Library Include="ThirdParty\bin\Release\PhysXExtensions_static_64.lib">
+      <Filter>ThirdParty\Lib\Release</Filter>
+    </Library>
+    <Library Include="ThirdParty\bin\Release\PhysXFoundation_static_64.lib">
+      <Filter>ThirdParty\Lib\Release</Filter>
+    </Library>
+    <Library Include="ThirdParty\bin\Release\PhysXPvdSDK_static_64.lib">
+      <Filter>ThirdParty\Lib\Release</Filter>
+    </Library>
+    <Library Include="ThirdParty\bin\Release\PhysXVehicle_static_64.lib">
+      <Filter>ThirdParty\Lib\Release</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThirdParty\bin\Debug\PhysXsDebug.zip">
+      <Filter>ThirdParty\Lib\Debug</Filter>
+    </None>
+    <None Include="ThirdParty\bin\Release\PhysXsRelease.zip">
+      <Filter>ThirdParty\Lib\Release</Filter>
+    </None>
   </ItemGroup>
 </Project>
