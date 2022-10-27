@@ -53,7 +53,14 @@ void ContentsCore::Start()
 		Dir.Move("Resources");
 		Dir.Move("Mesh");
 
-		GameEngineFBXMesh* Mesh = GameEngineFBXMesh::Load(Dir.PlusFilePath("2Handed.FBX"));
+		for (GameEngineFile& File : Dir.GetAllFile(".FBX"))
+		{
+			GameEngineFBXMesh* Mesh = GameEngineFBXMesh::Load(File.GetFullPath());
+
+			std::vector<FBXNodeInfo> Nodes = Mesh->CheckAllNode();
+		}
+		//for (GameEngineDirectory Dir.GetAllFile(".FBX");
+		//GameEngineFBXMesh* Mesh = GameEngineFBXMesh::Load(Dir.PlusFilePath("2Handed.FBX"));
 	}
 
 
