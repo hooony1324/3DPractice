@@ -533,6 +533,10 @@
       <FileType>Document</FileType>
     </CopyFileToFolders>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ThirdParty\bin\Debug\PhysXdebug.zip" />
+    <None Include="ThirdParty\bin\Release\PhysXrelease.zip" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
